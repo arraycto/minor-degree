@@ -343,6 +343,34 @@ function histogram(minorId,name) {
     });
 }
 
+function queryMinor(){
+    var url = "queryMinor";
+    clearDiv();
+    $.get(url,function (data) {
+        if (data.code == 0){
+            var list = data.data;
+            var html = "<div id=\"light\">\n" +
+                "        <table class=\"table\">\n" +
+                "            <tr>\n" +
+                "                <td>课程编号</td>\n" +
+                "                <td>辅修专业</td>\n" +
+                "                <td>开设学院</td>\n" +
+                "                <td>报名人数</td>\n" +
+                "                <td>操作</td>\n" +
+                "            </tr>"
+            for (var i = 0;i < list.length;i ++){
+                var minor = list[i];
+                html += showMinor(minor);
+            }
+            html += "</table>" +
+                "</div>";
+            $("#main").append(html)
+        } else {
+            alert(data.msg);
+        }
+    });
+}
+
 function showMinor(minor){
     var html = "<tr>\n" +
         "                <td>" + minor.minorId + "</td>\n" +
@@ -478,6 +506,48 @@ $("#queryMyStudent").on("click",function () {
     });
 });
 
+$("#score").on("click",function () {
+    clearDiv();
+    var html = "<div id=\"light\">" +
+        "                <ul class=\"nav nav-pills\">\n" +
+        "                    <li role=\"presentation\" class=\"active\"><button id=\"queryScore\">班级成绩</button></li>\n" +
+        "                    <li role=\"presentation\" class=\"active\"><button id=\"queryMyScore\">我的成绩</button></li>\n" +
+        "                </ul>"
+    "</div>";
+    $("#main").append(html);
+});
+
 $("#upload-table").on("click",function () {
     window.location.href = "uploadTable";
+});
+
+$("#queryScore").on("click",function(){
+    clearDiv();
+    var url = "queryScore";
+    $.get(url,function (data) {
+        if (data.code == 0){
+            var html ="<div id=\"light\"><table class=\"table\">\n" +
+                "            <tr>\n" +
+                "                <th>学号</th>\n" +
+                "                <th>姓名</th>\n" +
+                "                <th>辅修学位</th>\n" +
+                "                <th>课程</th>\n" +
+                "                <th>成绩</th>\n" +
+                "            </tr>";
+            var list = data.data;
+            for(var i = 0;i < list.length;i ++){
+                var tmp = list[i];
+                html += "            <tr>\n" +
+                    "                <th>" + tmp.userName + "</th>\n" +
+                    "                <th>" + tmp.name + "</th>\n" +
+                    "                <th>" + tmp.minorName + "</th>\n" +
+                    "                <th>" + tmp.courseName + "</th>\n" +
+                    "                <th>" + tmp.score + "</th>\n" +
+                    "            </tr>";
+            }
+            html += "</table></div>";
+        } else{
+            alert(data.msg);
+        }
+    });
 });

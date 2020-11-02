@@ -9,7 +9,7 @@ public class Score {
 
     private String minorName;
 
-    private Course course;
+    private int courseId;
 
     private double score;
 
@@ -53,12 +53,12 @@ public class Score {
         this.minorName = minorName;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public double getScore() {
