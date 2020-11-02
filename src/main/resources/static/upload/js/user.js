@@ -250,8 +250,8 @@ $("#pie").on("click",function () {
 });
 
 function addDiv() {
-    var html = "<div id=\"light\" class=\"col-sm-6\" style=\"height: 450px;\">" +
-        "</div><div id=\"light1\" class=\"col-sm-6\" style=\"height: 450px;\"></div>";
+    var html = "<div id=\"light\" class=\"col-sm-5\" style=\"height: 450px;\">" +
+        "</div><div id=\"light1\" class=\"col-sm-5\" style=\"height: 450px;\"></div>";
     $("#main").append(html);
 }
 
@@ -340,34 +340,6 @@ function histogram(minorId,name) {
             }]
         };
         myChart.setOption(option);
-    });
-}
-
-function queryMinor(){
-    var url = "queryMinor";
-    clearDiv();
-    $.get(url,function (data) {
-        if (data.code == 0){
-            var list = data.data;
-            var html = "<div id=\"light\">\n" +
-                "        <table class=\"table\">\n" +
-                "            <tr>\n" +
-                "                <td>课程编号</td>\n" +
-                "                <td>辅修专业</td>\n" +
-                "                <td>开设学院</td>\n" +
-                "                <td>报名人数</td>\n" +
-                "                <td>操作</td>\n" +
-                "            </tr>"
-            for (var i = 0;i < list.length;i ++){
-                var minor = list[i];
-                html += showMinor(minor);
-            }
-            html += "</table>" +
-                "</div>";
-            $("#main").append(html)
-        } else {
-            alert(data.msg);
-        }
     });
 }
 

@@ -31,8 +31,8 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public RespData queryMyCourse(int userId) {
-        User user = userMapper.queryUserCardId(userId);
-        EntryForm entryForm = entryFormMapper.queryEntryFormCardId(user.getCardId());
+        User user = userMapper.queryUserNameById(userId);
+        EntryForm entryForm = entryFormMapper.queryEntryFormByUserName(user.getUsername());
         if (entryForm == null){
             return new RespData(RespCode.ENPTY);
         }
