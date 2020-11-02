@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huc.dao.EntryFormMapper">
+  <resultMap id="BaseResultMap" type="com.huc.bean.EntryForm">
+    <result column="entry_form_id" jdbcType="INTEGER" property="entryFormId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="major_name" jdbcType="VARCHAR" property="majorName" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="average_score" jdbcType="REAL" property="averageScore" />
+    <result column="interest_course" jdbcType="VARCHAR" property="interestCourse" />
+    <result column="minor_id" jdbcType="INTEGER" property="minorId" />
+    <result column="checked" jdbcType="INTEGER" property="checked" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+  </resultMap>
+  <insert id="insert" parameterType="com.huc.bean.EntryForm">
+    insert into tb_entry_form (entry_form_id, user_name, major_name, 
+      card_id, average_score, interest_course, 
+      minor_id, checked, reserved1, 
+      reserved2, reserved3, reserved4
+      )
+    values (default, #{userName,jdbcType=VARCHAR}, #{majorName,jdbcType=VARCHAR},
+      #{cardId,jdbcType=VARCHAR}, #{averageScore,jdbcType=REAL}, #{interestCourse,jdbcType=VARCHAR}, 
+      #{minorId,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huc.bean.EntryForm">
+    insert into tb_entry_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="entryFormId != null">
+        entry_form_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="majorName != null">
+        major_name,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="averageScore != null">
+        average_score,
+      </if>
+      <if test="interestCourse != null">
+        interest_course,
+      </if>
+      <if test="minorId != null">
+        minor_id,
+      </if>
+      <if test="checked != null">
+        checked,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="entryFormId != null">
+        #{entryFormId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null">
+        #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="averageScore != null">
+        #{averageScore,jdbcType=REAL},
+      </if>
+      <if test="interestCourse != null">
+        #{interestCourse,jdbcType=VARCHAR},
+      </if>
+      <if test="minorId != null">
+        #{minorId,jdbcType=INTEGER},
+      </if>
+      <if test="checked != null">
+        #{checked,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="queryToAudit" resultMap="BaseResultMap">
+        select entry_form_id,user_name,major_name,minor_id from tb_entry_form where checked = #{checked}
+    </select>
+    <select id="queryApplyUser" resultMap="BaseResultMap">
+        select user_name,major_name,card_id,average_score,interest_course,checked,minor_id from tb_entry_form
+    </select>
+    <select id="queryEntryForm" resultType="java.lang.Integer">
+        select count(*) from tb_entry_form where major_name = #{academyName} and minor_id = #{minorId}
+    </select>
+    <select id="queryEntryFormByMajorNameAndMinorId" resultType="java.lang.Integer">
+        select count(*) from tb_entry_form where major_name = #{majorName} and minor_id = #{minorId}
+    </select>
+    <select id="queryEntryFormCardId" resultMap="BaseResultMap">
+        select minor_id,checked from tb_entry_form where card_id = #{cardId}
+    </select>
+    <select id="queryEntryFormByUserName" resultMap="BaseResultMap">
+        select * from tb_entry_form where user_name = #{userName}
+    </select>
+    <update id="updateEntryFormReserved1">
+        update tb_entry_form set reserved1 = #{newFileName} where user_name = #{userName}
+    </update>
+</mapper>

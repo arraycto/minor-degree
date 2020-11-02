@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huc.dao.AcademyMapper">
+  <resultMap id="BaseResultMap" type="com.huc.bean.Academy">
+    <result column="academy_id" jdbcType="INTEGER" property="academyId" />
+    <result column="academy_name" jdbcType="VARCHAR" property="academyName" />
+    <result column="academy_address" jdbcType="VARCHAR" property="academyAddress" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+  </resultMap>
+  <insert id="insert" parameterType="com.huc.bean.Academy">
+    insert into tb_academy (academy_id, academy_name, academy_address, 
+      reserved1, reserved2, reserved3, 
+      reserved4)
+    values (#{academyId,jdbcType=INTEGER}, #{academyName,jdbcType=VARCHAR}, #{academyAddress,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, 
+      #{reserved4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huc.bean.Academy">
+    insert into tb_academy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="academyId != null">
+        academy_id,
+      </if>
+      <if test="academyName != null">
+        academy_name,
+      </if>
+      <if test="academyAddress != null">
+        academy_address,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="academyId != null">
+        #{academyId,jdbcType=INTEGER},
+      </if>
+      <if test="academyName != null">
+        #{academyName,jdbcType=VARCHAR},
+      </if>
+      <if test="academyAddress != null">
+        #{academyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="queryAcademyById" resultMap="BaseResultMap">
+        select academy_name from tb_academy where academy_id = #{id}
+    </select>
+    <select id="queryAcademyIdAndName" resultMap="BaseResultMap">
+        select academy_id,academy_name from tb_academy
+    </select>
+    <select id="queryAcademyId" resultMap="BaseResultMap">
+        select academy_id from tb_academy where academy_name = #{academyName}
+    </select>
+</mapper>
