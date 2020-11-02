@@ -14,4 +14,10 @@ public interface TeacherMapper {
     Teacher queryTeacherId(int userId);
 
     Teacher queryTeacherName(int teacherId);
+
+    void updateTeacher(int teacherId,String userName,String academyName,String professional);
+
+    Teacher selectTeacherById(int teacherId);
+
+    void deleteTeacherMessage(int userId);
 }

@@ -83,4 +83,14 @@
     <select id="queryTeacherName" resultMap="BaseResultMap">
         select user_name from tb_teacher where teacher_id = #{teacherId}
     </select>
+  <select id="selectTeacherById" resultMap="BaseResultMap">
+        select * from tb_teacher where teacher_id=#{teacherId}
+    </select>
+  <update id="updateTeacher" parameterType="com.huc.bean.Teacher">
+        update tb_teacher  set user_name=#{userName},academy_name=#{academyName},professional=#{professional}
+        where teacher_id=#{teacherId}
+  </update>
+  <delete id="deleteTeacherMessage" parameterType="com.huc.bean.Teacher">
+        delete from tb_teacher where teacher_id=#{teacherId}
+   </delete>
 </mapper>

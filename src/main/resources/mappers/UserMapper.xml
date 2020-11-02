@@ -141,4 +141,7 @@
     <select id="queryUserNameByUsername" resultMap="BaseResultMap">
         select name from tb_users where username = #{username}
     </select>
+    <delete id="deleteUserById" parameterType="com.huc.bean.User">
+        delete from tb_users where user_id = #{userId}
+    </delete>
 </mapper>

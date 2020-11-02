@@ -17,4 +17,6 @@ public interface IUserService {
     RespData adminUpdateUser(User user);
 
     RespData adminSelectById(int userId);
+
+    void deleteUserMessage(int userId);
 }

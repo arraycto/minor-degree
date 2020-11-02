@@ -45,7 +45,7 @@ function parseHtml(user) {
         "                <th>" + user.phones + "</th>\n" +
         "                <th>" + user.email + "</th>\n" +
         "                <th>" + user.identity + "</th>\n" +
-        "                <th><a href=\"update_user?userId="+ user.userId + "\">修改</a><a href=\"#\">删除</a></th>\n" +
+        "                <th><a href=\"update_user?userId="+ user.userId + "\">修改</a><a href=\"insertMessage?userId=" + user.userId + "\">删除</a></th>\n" +
         "            </tr>";
     return html;
 }
@@ -166,7 +166,7 @@ function showStudent(student){
         "                <th>" + student.classes + "</th>\n" +
         "                <th>" + student.majorName + "</th>\n" +
         "                <th>" + student.academyName + "</th>\n" +
-        "                <th><a href=\"#\">修改</a><a href=\"#\">删除</a></th>\n" +
+        "                <th><a href=\"selectStudent?studentId=" + student.studentId + "\">修改</a><a href=\"deleteStudent?studentId=" + student.studentId + "\">删除</a></th>\n" +
         "            </tr>";
     return html;
 }
@@ -201,7 +201,7 @@ function showTeacher(teacher) {
         "                <th>" + teacher.userName + "</th>\n" +
         "                <th>" + teacher.academyName + "</th>\n" +
         "                <th>" + teacher.professional + "</th>\n" +
-        "                <th><a href=\"#\">修改</a><a href=\"#\">删除</a></th>\n" +
+        "                <th><a href=\"selectTeacher?teacherId=" + teacher.teacherId + "\">修改</a><a href=\"deleteTeacher?teacherId="+ teacher.teacherId + "\">删除</a></th>\n" +
         "            </tr>";
     return html;
 }

@@ -10,4 +10,10 @@ public interface StudentMapper {
     int insertSelective(Student record);
 
     List<Student> queryStudent();
+
+    Student selectMessageById(int studentId);
+
+    void updateStudent(int studentId,String userName,String classes,String majorName,String academyName);
+
+    void deleteStudentMessage(int userId);
 }

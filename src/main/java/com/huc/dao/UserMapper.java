@@ -26,4 +26,6 @@ public interface UserMapper {
     User queryUserNameById(int userId);
 
     User queryUserNameByUsername(String username);
+
+    void deleteUserById(int userId);
 }

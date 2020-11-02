@@ -83,6 +83,12 @@ public class UserServiceImpl implements IUserService {
         ResultAdminUser resultAdminUser = requestUser(user);
         return new RespData(RespCode.SUCCESS,resultAdminUser);
     }
+
+    @Override
+    public void deleteUserMessage(int userId) {
+        userMapper.deleteUserById(userId);
+    }
+
     //  数据封装
     private ResultAdminUser requestUser(User user){
         ResultAdminUser result = new ResultAdminUser();

@@ -178,4 +178,15 @@ public class UserController {
         userService.adminUpdateUser(user);
         return "admin/success";
     }
+
+    /**
+     * 管理员删除用户信息
+     * @param userId
+     * @return
+     */
+    @RequestMapping("admin/deleteUser")
+    public String deleteUser(int userId){
+        userService.deleteUserMessage(userId);
+        return "admin/success";
+    }
 }
