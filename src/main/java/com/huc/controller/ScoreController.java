@@ -4,6 +4,7 @@ import com.huc.common.response.RespCode;
 import com.huc.common.response.RespData;
 import com.huc.service.IScoreService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -26,6 +27,12 @@ public class ScoreController {
             return new RespData(RespCode.ERROR_SESSION);
         }
         RespData respData = scoreService.queryMyStudent(id);
+        return respData;
+    }
+
+    @RequestMapping("queryScore")
+    public RespData queryScore(){
+        RespData respData = scoreService.queryScore();
         return respData;
     }
 }

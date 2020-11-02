@@ -6,16 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="minor-dergee" />
+        <module name="minor-degree" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="minor-dergee" target="1.8" />
+      <module name="minor-degree" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="minor-dergee" options="-parameters" />
+      <module name="minor-degree" options="-parameters" />
     </option>
   </component>
 </project>

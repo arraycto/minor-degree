@@ -26,5 +26,8 @@ public interface CourseMapper {
     List<Course> queryTeacherCourse(int id);
 
     @Select({"select * from tb_course where minor_id = #{minorId}"})
+
     List<Course> queryMinorCourse(int minorId);
+    @Select({"select course_name from tb_course where course_id = #{courseId}"})
+    Course queryCourseName(int courseId);
 }
