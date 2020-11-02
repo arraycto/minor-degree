@@ -509,8 +509,3 @@ $("#queryMyStudent").on("click",function () {
 $("#upload-table").on("click",function () {
     window.location.href = "uploadTable";
 });
-
-//下载文件
-$("#down-table").on("click",function () {
-
-});
